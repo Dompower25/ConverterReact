@@ -37,6 +37,8 @@ function App() {
       },
     ]);
 
+  
+  const [title, setTitle] = useState('');
 
   return (
     <div className="App">
