@@ -1,11 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import App from './App.js'
 
 
+const root = ReactDOM.createRoot(
+  document.getElementById("root")
+);
 
-ReactDOM.render(
-  <div>
-    Сдесь будет конвертор валют
-  </div>,
-  document.getElementById('root')
+root.render(
+  <App />
 );
