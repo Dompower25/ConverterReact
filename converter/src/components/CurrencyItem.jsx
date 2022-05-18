@@ -3,13 +3,16 @@ import React from 'react'
 function CurrencyItem(props) {
   return (
     <div className="inputItem">
-      <div className="convertor__input">
+      <div className="convertor__input row">
         <input
+          className="form-control"
           type="number"
-          id={props.inputItem.id}
-
+          id={props.inputItem.Cur_Abbreviation}
+          //        value={props.inputItem.value}
         />
-        <span className="currency-name">{props.inputItem.id}</span>
+        <span className="currency-name">
+          {props.inputItem.Cur_Abbreviation}
+        </span>
       </div>
     </div>
   );
