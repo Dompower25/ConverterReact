@@ -5,8 +5,6 @@ import LogoMain from './components/LogoMain';
 import './style/App.css';
 //import { oldCoursArr } from "./old_Cours";
 
-
-
 function App() {
 
   const [currency, setCurrency] = useState(
@@ -36,16 +34,13 @@ function App() {
         Cur_OfficialRate: 1.6722,
       },
     ]);
-
   
-  const [title, setTitle] = useState('');
-
   return (
     <div className="App">
       <LogoMain />
       <LinkBankRB />
       {currency.map((inputItem) => (
-        <CurrencyItem inputItem={inputItem} key={Date.now}/>
+        <CurrencyItem inputItem={inputItem} key={inputItem.Cur_ID}/>
       ))}
     </div>
   );

@@ -6,7 +6,7 @@ function MyInput(props) {
       {...props}
       className="form-control"
       type="number"
-      id={props.inputItem}
+      id={props.inputItem.Cur_ID}
     />
   );
 }

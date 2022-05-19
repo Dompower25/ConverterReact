@@ -5,7 +5,7 @@ function CurrencyItem(props) {
   return (
     <div className="inputItem">
       <div className="convertor__input row">
-        <MyInput/>
+        <MyInput {...props}/>
         <span className="currency-name">
           {props.inputItem.Cur_Abbreviation}
         </span>
