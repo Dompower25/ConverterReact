@@ -1,12 +1,11 @@
 import React from 'react';
-import CurrencyItem from './components/CurrencyItem';
+import CurrencyItem from './CurrencyItem'
 
 const TranslationElements = ({ currency }) => {
   return (
-    {currency.map((inputItem) => (
+      currency.map((inputItem) => (
         <CurrencyItem inputItem={inputItem} key={inputItem.Cur_ID} />
       ))
-    }
   );
 };
 
