@@ -1,5 +1,13 @@
 export let oldCoursArr = [
   {
+    Cur_ID: 1,
+    Date: "2022-04-03T00:00:00",
+    Cur_Abbreviation: "BYN",
+    Cur_Scale: 1,
+    Cur_Name: "Белорусский рубль",
+    Cur_OfficialRate: 1,
+  },
+  {
     Cur_ID: 440,
     Date: "2022-04-03T00:00:00",
     Cur_Abbreviation: "AUD",
