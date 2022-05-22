@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MyInput(props) {
+function MyInput(props, setCurrency) {
   return (
     <input
       {...props}
