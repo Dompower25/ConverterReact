@@ -2,7 +2,7 @@ import React from 'react';
 import CurrencyItem from './CurrencyItem'
 
 
-const TranslationElements = ({ currency, setCurrency, remove }) => {
+const TranslationElements = ({ currency, remove }) => {
   return currency.map((inputItem) => (
     <CurrencyItem
       remove={remove}
@@ -10,7 +10,6 @@ const TranslationElements = ({ currency, setCurrency, remove }) => {
       key={inputItem.Cur_ID}
       setCurrency
     />
-    
   ));
 };
 

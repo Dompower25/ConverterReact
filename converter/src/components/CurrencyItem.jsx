@@ -2,15 +2,15 @@ import React from 'react'
 import MyInput from './MyInput';
 import MyButton from './UI/MyButton';
 
-function CurrencyItem(props, remove, setCurrency) {
+function CurrencyItem({inputItem, remove}) {
   return (
     <div className="inputItem">
       <div className="convertor__input row">
-        <MyInput {...props} setCurrency />
+        <MyInput id = {inputItem.Cur_ID} />
         <span className="currency-name">
-          {props.inputItem.Cur_Abbreviation}
+          {inputItem.Cur_Abbreviation}
         </span>
-        <MyButton onClick={() => props.remove(props.inputItem)}>
+        <MyButton onClick={() => remove(inputItem)}>
           удалить
         </MyButton>
       </div>
