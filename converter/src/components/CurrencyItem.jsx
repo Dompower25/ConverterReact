@@ -3,23 +3,20 @@ import MyInput from "./MyInput";
 import MyButton from "./UI/MyButton";
 
 function CurrencyItem({
-  inputItem,
-  remove,
-  curRate,
-  curSale,
-  currencyValue,
-  setCurrencyValue,
+  name,
+  value,
+  onCurrencyChange,
+  onRemove,
 }) {
   return (
     <div className="inputItem">
       <div className="convertor__input row">
         <MyInput
-          setCurrencyValue={setCurrencyValue}
-          value={currencyValue * (curRate * curSale)}
-          id={inputItem.Cur_ID}
+          onChange={onCurrencyChange}
+          value={value}
         />
-        <span className="currency-name">{inputItem.Cur_Abbreviation}</span>
-        <MyButton onClick={() => remove(inputItem)}>удалить</MyButton>
+        <span className="currency-name">{name}</span>
+        <MyButton onClick={onRemove}>удалить</MyButton>
       </div>
     </div>
   );

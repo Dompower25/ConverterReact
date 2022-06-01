@@ -6,11 +6,14 @@ import { oldCoursArr } from "./old_Cours";
 import CurrencyItem from "./components/CurrencyItem";
 
 function App() {
+  // Список валют
   const [currency, setCurrency] = useState(oldCoursArr);
-  const [currencyValue, setCurrencyValue] = useState(1);
+  
+  // В данном случае мы нормализуем значение приводя все к USD
+  const [normalizedValue, setNormalizedValue] = useState(1);
 
-  const removeInput = (inputItem) => {
-    setCurrency(currency.filter((i) => i.Cur_ID !== inputItem.Cur_ID));
+  const removeInput = (id) => {
+    setCurrency(currency.filter((i) => i.Cur_ID !== id));
   };
 
   return (
@@ -18,15 +21,15 @@ function App() {
       <LogoMain />
       <div id="message"></div>
       <LinkBankRB />
-      {currency.map((inputItem) => (
+      {currency.map(({ Cur_ID, Cur_Scale, Cur_OfficialRate, Cur_Abbreviation }) => (
         <CurrencyItem
-          currencyValue={currencyValue}
-          setCurrencyValue={setCurrencyValue}
-          curSale={inputItem.Cur_Scale}
-          curRate={inputItem.Cur_OfficialRate}
-          remove={removeInput}
-          inputItem={inputItem}
-          key={inputItem.Cur_ID}
+          name={Cur_Abbreviation}
+          // USD -> Валюта
+          value={normalizedValue * (Cur_Scale * Cur_OfficialRate)}
+           // Валюта -> USD 
+          onCurrencyChange={(newValue) => setNormalizedValue((Cur_Scale * Cur_OfficialRate) / newValue)}
+          onRemove={() => removeInput(Cur_ID)}
+          key={Cur_ID}
         />
       ))}
     </div>

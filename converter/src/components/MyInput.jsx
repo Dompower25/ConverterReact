@@ -1,14 +1,13 @@
 import React from "react";
 
-function MyInput({ id, value, setCurrencyValue }) {
+function MyInput({ value, onChange }) {
   return (
     <input
       className="form-control"
       value={value}
       type="number"
-      id={id}
       onChange={(event) => {
-        setCurrencyValue(event.target.value);
+        onChange(event.target.value);
       }}
     />
   );
