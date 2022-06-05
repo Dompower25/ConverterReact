@@ -6,6 +6,7 @@ import { oldCoursArr } from "./old_Cours";
 import CurrencyItem from "./components/CurrencyItem";
 
 function App() {
+  // Список валют
   const [currency, setCurrency] = useState(oldCoursArr);
   const [normalizedValue, setNormalizedValue] = useState(1);
 
