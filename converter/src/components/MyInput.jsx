@@ -7,7 +7,7 @@ function MyInput({ value, onChange }) {
       value={value}
       type="number"
       onChange={(event) => {
-        onChange(event.target.value);
+        onChange(event.target.value)
       }}
     />
   );

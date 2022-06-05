@@ -1,0 +1,15 @@
+.button{
+  width: 100%;
+  margin: 1px auto;
+  padding: 3px;
+  border-radius: 10px;
+  background-image: radial-gradient(circle 592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgba(160, 199, 254, 1) 74.6%);
+  color: rgb(129, 112, 112);
+  font-size: 18px;
+}
+
+.button:hover {
+  border: 2px solid rgb(66, 164, 177);
+}
