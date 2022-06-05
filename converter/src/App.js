@@ -29,7 +29,6 @@ function App() {
 
   return (
     <div className="App">
-      <div className="main_box">
         <LogoMain />
         <div id="message"></div>
         <LinkBankRB />
@@ -51,7 +50,7 @@ function App() {
             />
           )
         )}
-      </div>
+
 
       <div className="ListCurr">
         {currencyList.map(({ Cur_Abbreviation, Cur_Name, Cur_ID }) => (
