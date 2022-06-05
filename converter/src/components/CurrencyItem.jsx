@@ -2,24 +2,13 @@ import React from "react";
 import MyInput from "./MyInput";
 import MyButton from "./UI/MyButton";
 
-function CurrencyItem({
-  inputItem,
-  remove,
-  curRate,
-  curSale,
-  currencyValue,
-  setCurrencyValue,
-}) {
+function CurrencyItem({ name, value, onCurrencyChange, onRemove }) {
   return (
     <div className="inputItem">
       <div className="convertor__input row">
-        <MyInput
-          setCurrencyValue={setCurrencyValue}
-          value={currencyValue * (curRate * curSale)}
-          id={inputItem.Cur_ID}
-        />
-        <span className="currency-name">{inputItem.Cur_Abbreviation}</span>
-        <MyButton onClick={() => remove(inputItem)}>удалить</MyButton>
+        <MyInput onChange={onCurrencyChange} value={value} />
+        <span className="currency-name">{name}</span>
+        <MyButton onClick={onRemove}>удалить</MyButton>
       </div>
     </div>
   );
