@@ -1,7 +1,7 @@
 import React from 'react'
 import ButtonLine from "./ButtonLine";
 
-function DropList({ name, id, onAdd }) {
+function DropList({ name, onAdd }) {
   return (
     <ul className="dropList">
       <li>
