@@ -1,27 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style/App.css";
 import LinkBankRB from "./components/LinkBankRB";
 import LogoMain from "./components/LogoMain";
 import { oldCoursArr } from "./old_Cours";
-import { filtArray } from "./FilterArray";
 import CurrencyItem from "./components/CurrencyItem";
 import DropList from "./components/UI/DropList";
 import ButtonLine from "./components/UI/ButtonLine";
 
-
 function App() {
+  var setCur_name = new Set(["BYN", "USD", "EUR", "PLN"]);
 
-  var setCur_name = new Set(['BYN', 'USD', 'EUR', 'PLN'])
-  
   const listItemsForInputs = (set, query) => {
     return set.filter((i) => query.has(i.Cur_Abbreviation));
-  }
-  
+  };
   const arrCurr = listItemsForInputs(oldCoursArr, setCur_name);
-  
-  // Список валют
+
   const [currency, setCurrency] = useState(arrCurr);
   const [normalizedValue, setNormalizedValue] = useState(1);
+
+  useEffect(
+    (e) => {
+      setCurrencyList(currencyList.filter((i) => i.Cur_Abbreviation !== e));
+      console.log("useEffect");
+    },
+    [currency]
+  );
+  const [currencyList, setCurrencyList] = useState([]);
 
   const removeInput = (id) => {
     setCurrency(currency.filter((i) => i.Cur_ID !== id));
@@ -36,8 +40,15 @@ function App() {
       currency.findIndex((i) => i.Cur_Abbreviation == e.Cur_Abbreviation) === -1
   );
 
-  const [currencyList, setCurrencyList] = useState(filtArray);
+  const filterArrayByNameCur = oldCoursArr.filter(
+    (e) =>
+      currencyList.findIndex(
+        (i) => i.Cur_Abbreviation == e.Cur_Abbreviation
+      ) === -1
+  );
 
+  console.log(currencyList);
+  console.log(currency);
   return (
     <div className="App">
       <LogoMain />
@@ -49,11 +60,11 @@ function App() {
             name={Cur_Abbreviation}
             key={Cur_ID}
             // USD -> Валюта
-            value={normalizedValue * (Cur_Scale * Cur_OfficialRate)}
+            value={normalizedValue * (Cur_OfficialRate * Cur_Scale)}
             // Валюта -> USD
-            onCurrencyChange={(val) =>
-              setNormalizedValue((Cur_Scale * Cur_OfficialRate) / val)
-            }
+            onCurrencyChange={(val) => {
+              setNormalizedValue(val);
+            }}
             onRemove={() => {
               removeInput(Cur_ID);
               setCurrencyList(filterArrayByName);
@@ -70,6 +81,7 @@ function App() {
             key={Cur_ID}
             onAdd={() => {
               addInput(Cur_Abbreviation);
+              setCurrency(filterArrayByNameCur);
             }}
           />
         ))}
